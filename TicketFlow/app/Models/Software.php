@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Software extends Model
 {
-    //
+    use HasFactory;
+
+    protected $fillable = ['name'];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }
