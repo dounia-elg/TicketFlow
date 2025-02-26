@@ -4,13 +4,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AssignmentController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Ticket;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $tickets = Ticket::where('client_id', auth()->id())->get();
+    return view('dashboard', compact('tickets'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -2,11 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h1>Dashboard</h1>
-    @if(auth()->user()->role === 'client')
+    <h1>Tickets</h1>
     <a href="{{ route('tickets.create') }}" class="btn btn-primary">Create Ticket</a>
-    @endif
-    <h2>My Tickets</h2>
     <table class="table mt-4">
         <thead>
             <tr>
